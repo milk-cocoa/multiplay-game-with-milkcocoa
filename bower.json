@@ -1,0 +1,21 @@
+{
+  "name": "milkcocoa",
+    "version": "2.0.0",
+    "authors": [
+      "Shuhei Hiya"
+      ],
+    "license": "ISC",
+    "ignore": [
+      "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+      ],
+    "dependencies": {
+      "EaselJS": "*"
+    },
+    "devDependencies": {
+      "EaselJS": "*"
+    }
+}

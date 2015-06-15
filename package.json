@@ -1,0 +1,25 @@
+{
+  "name": "milkcocoa-js-client",
+  "descrption": "milkcocoa js client.",
+  "version": "2.0.0",
+  "author" : {
+    "name" : "Technical Rockstars"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "engines":{
+    "node" : ">=0.10.*"
+  },
+  "dependencies": {
+  },
+  "devDependencies" : {
+    "gulp": "*",
+    "gulp-connect": "*",
+    "vinyl-source-stream": "*",
+    "browserify" : "*",
+    "gulp-uglify" : "*",
+    "vinyl-buffer" : "*"
+  }
+}
