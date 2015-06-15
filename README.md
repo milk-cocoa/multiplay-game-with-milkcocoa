@@ -4,6 +4,10 @@ Multi Player Game Library
 このライブラリはMilkcocoa( https://mlkcca.com ) を利用しています。
 またサンプルにはenchant.js( https://github.com/wise9/enchant.js )を利用しています。
 
+# DEMO
+
+http://milk-cocoa.github.io/multiplay-game-with-milkcocoa/examples/rpg/
+
 # HOT TO START
 
 ```
