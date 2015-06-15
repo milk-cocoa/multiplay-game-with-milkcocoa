@@ -23,7 +23,7 @@ gulp serve
 例えばenchant.jsではgame.onloadの中でinit関数を呼びます。
 
 ```
-    var milkcocoaGame = new MultiPlayerGame("hotia8yv36p.mlkcca.com");
+    var milkcocoaGame = new MultiPlayerGame("{your-app-id}.mlkcca.com");
 
     milkcocoaGame.init();
 
