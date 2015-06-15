@@ -1,11 +1,10 @@
 {
-  "name": "milkcocoa-js-client",
-  "descrption": "milkcocoa js client.",
-  "version": "2.0.0",
+  "name": "multiplayer-game",
+  "descrption": "multiplayer game library with Milkcocoa",
+  "version": "0.0.1",
   "author" : {
     "name" : "Technical Rockstars"
   },
-  "private": true,
   "scripts": {
     "start": "node app"
   },
