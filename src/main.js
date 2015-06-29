@@ -11,8 +11,8 @@ function MilkcocoaGame(host, option) {
     this.onCreatedObjectHandler = null;
     this.masters = {};
     this.replicas = {};
-    this.baseDS.on('set', function(setted) {
-    	self.register(setted);
+    this.baseDS.on('send', function(sended) {
+    	self.register(sended.value);
     });
 }
 

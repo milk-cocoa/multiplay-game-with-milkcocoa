@@ -1,7 +1,7 @@
 enchant();
 
 window.onload = function() {
-    var milkcocoaGame = new MultiPlayerGame("{your-app-id}.mlkcca.com");
+    var milkcocoaGame = new MultiPlayerGame("hotia8yv36p.mlkcca.com");
     var game = new Game(320, 320);
     var stage = new Group();
     game.fps = 15;
