@@ -37,7 +37,7 @@ gulp serve
 基本的にパラメータの更新はマスターだけ行い、レプリカはデータの更新通知を受け取るだけです。
 
 ```
-var masterObject = milkcocoaGame.createObject({
+var masterObject = milkcocoaGame.createObject('master_unique_id', {
     x : 100,
     y : 200
 });
