@@ -18,7 +18,9 @@ function MilkcocoaGame(host, option) {
 
 MilkcocoaGame.prototype.register = function(setted) {
 	var self = this;
-	if(!this.masters.hasOwnProperty(setted.id)) {
+	if(this.masters.hasOwnProperty(setted.id)) {
+		this.masters[setted.id]._update(setted.value, setted.uuid);
+	}else{
     	if(self.replicas.hasOwnProperty(setted.id)) {
     		self.replicas[setted.id]._update(setted.value);
     	}else{
@@ -51,19 +53,14 @@ MilkcocoaGame.prototype.init = function() {
 /*
 	create master object
 */
-MilkcocoaGame.prototype.createObject = function(params) {
-	var masterid = localStorage.getItem('mlkccagame.masterid');
-	if(!masterid) {
-		masterid = getid();
-		localStorage.setItem('mlkccagame.masterid', masterid);
+MilkcocoaGame.prototype.createObject = function(master_id, params) {
+	if(this.replicas.hasOwnProperty(master_id)) {
+		params = this.replicas[master_id].getParams();
+		this.replicas[master_id].destroy();
+		delete this.replicas[master_id];
 	}
-	if(this.replicas.hasOwnProperty(masterid)) {
-		params = this.replicas[masterid].getParams();
-		this.replicas[masterid].destroy();
-		delete this.replicas[masterid];
-	}
-	this.pingManager.setId(masterid);
-	var masterObject = new MasterObject(this.baseDS, masterid, params);
+	this.pingManager.setId(master_id);
+	var masterObject = new MasterObject(this.baseDS, master_id, params);
 	this.masters[masterObject.getId()] = masterObject;
 	return masterObject;
 }
@@ -83,11 +80,4 @@ MilkcocoaGame.prototype.getNumOfRepls = function() {
 
 window.MultiPlayerGame = MilkcocoaGame;
 
-function getid() {
-	var uuid = new Date().getTime().toString(36);
-	for(var i=0;i < 6;i++) {
-		uuid += String.fromCharCode(97+(((Math.random() * 260) << 0) % 26));
-	}
-	return uuid;
-}
 

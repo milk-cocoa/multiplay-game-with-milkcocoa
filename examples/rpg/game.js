@@ -158,7 +158,14 @@ window.onload = function() {
                stage.removeChild(character); 
             });
         });
-        var masterObject = milkcocoaGame.createObject({
+
+        var master_id = localStorage.getItem('mlkccagame.masterid');
+        if(!master_id) {
+            master_id = getid();
+            localStorage.setItem('mlkccagame.masterid', master_id);
+        }
+
+        var masterObject = milkcocoaGame.createObject(master_id, {
             x : 6 * 16 - 8,
             y : 10 * 16,
             d : 0
@@ -170,6 +177,7 @@ window.onload = function() {
             console.log('master:onUpdate', params);
             player.x = params.x;
             player.y = params.y;
+            player.op = params.d;
         });
 
         milkcocoaGame.init();
@@ -288,3 +296,11 @@ window.onload = function() {
     game.start();
 
 };
+
+function getid() {
+    var uid = new Date().getTime().toString(36);
+    for(var i=0;i < 6;i++) {
+        uid += String.fromCharCode(97+(((Math.random() * 260) << 0) % 26));
+    }
+    return uid;
+}

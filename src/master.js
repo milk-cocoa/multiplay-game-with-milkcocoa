@@ -1,5 +1,6 @@
 function MasterObject(baseDS, _id, _params) {
 	this.id = _id;
+	this.uuid = uuid();
 	this.params = _params;
 	this.onUpdateHandler = null;
 	this.baseDS = baseDS;
@@ -17,7 +18,8 @@ MasterObject.prototype.getParams = function() {
 	return this.params;
 }
 
-MasterObject.prototype._update = function(_params) {
+MasterObject.prototype._update = function(_params, uuid) {
+	if(this.uuid == uuid) return;
 	for(var key in _params) this.params[key] = _params[key];
 	if(this.onUpdateHandler) {
 		this.onUpdateHandler(this.params);
@@ -31,6 +33,7 @@ MasterObject.prototype.update = function(_params) {
 	for(var key in _params) this.params[key] = _params[key];
 	this.baseDS.send({
 		id : this.id,
+		uuid : this.uuid,
 		value : _params
 	});
 	if(this.saveTimer) clearTimeout(this.saveTimer);
@@ -53,6 +56,14 @@ MasterObject.prototype.save = function() {
 
 MasterObject.prototype.onUpdate = function(handler) {
 	this.onUpdateHandler = handler;
+}
+
+function uuid() {
+    var uid = new Date().getTime().toString(36);
+    for(var i=0;i < 8;i++) {
+        uid += String.fromCharCode(97+(((Math.random() * 260) << 0) % 26));
+    }
+    return uid;
 }
 
 module.exports = MasterObject;
