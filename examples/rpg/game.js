@@ -177,6 +177,7 @@ window.onload = function() {
             console.log('master:onUpdate', params);
             player.x = params.x;
             player.y = params.y;
+            player.op = params.d;
         });
 
         milkcocoaGame.init();

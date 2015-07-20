@@ -18,7 +18,9 @@ function MilkcocoaGame(host, option) {
 
 MilkcocoaGame.prototype.register = function(setted) {
 	var self = this;
-	if(!this.masters.hasOwnProperty(setted.id)) {
+	if(this.masters.hasOwnProperty(setted.id)) {
+		this.masters[setted.id]._update(setted.value, setted.uuid);
+	}else{
     	if(self.replicas.hasOwnProperty(setted.id)) {
     		self.replicas[setted.id]._update(setted.value);
     	}else{
